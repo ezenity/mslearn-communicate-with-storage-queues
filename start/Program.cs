@@ -14,7 +14,7 @@ namespace StorageQueueApp
         static async Task Main(string[] args)
         {
             // Add code to create QueueClient and Storage Queue Here
-            string connectionString = Environment.GetEnvironmentVariable("DefaultEndpointsProtocol=https;AccountName=queuestorageamm89;AccountKey=uf6jOFP4AsWecZ8V4gjqiU4Udx3sQeufSLILTQZk/d0jaJhcpGxRCiZDdtNYL+hHaqoJp55/ZzhNkbm7GtLBjg==;EndpointSuffix=core.windows.net");
+            string connectionString = Environment.GetEnvironmentVariable("DefaultEndpointsProtocol=https;EndpointSuffix=core.windows.net;AccountName=queuestorageamm89;AccountKey=uf6jOFP4AsWecZ8V4gjqiU4Udx3sQeufSLILTQZk/d0jaJhcpGxRCiZDdtNYL+hHaqoJp55/ZzhNkbm7GtLBjg==");
             QueueClient queueClient = new QueueClient(connectionString, "newsqueue");
 
             await queueClient.CreateIfNotExistsAsync();
