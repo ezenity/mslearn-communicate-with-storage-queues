@@ -48,7 +48,21 @@ namespace StorageQueueApp
 
         static async Task SendMessageAsync(QueueClient queueClient)
         {
-            throw new NotImplementedException();
+            // Get input from user
+            Console.WriteLine("Enter headline: ");
+            string headline = Console.ReadLine();
+            Console.WriteLine("Enter location: ");
+            string location = Console.ReadLine();
+            NewsArticle article = new NewsArticle() { Headline = headline, Location = location };
+
+            // Build and send the message to the queue
+            string message = JsonSerializer.Serialize(article);
+            Response<SendReceipt> response = await queueClient.SendMessageAsync(message);
+            SendReceipt sendReceipt = response.Value;
+
+            // Print out the send receipt
+            Console.WriteLine($"Message sent.  Message id={sendReceipt.MessageId}  Expiration time={sendReceipt.ExpirationTime}");
+            Console.WriteLine();
         }
 
 
