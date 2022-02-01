@@ -17,6 +17,8 @@ namespace StorageQueueApp
             string connectionString = Environment.GetEnvironmentVariable("DefaultEndpointsProtocol=https;AccountName=queuestorageamm89;AccountKey=uf6jOFP4AsWecZ8V4gjqiU4Udx3sQeufSLILTQZk/d0jaJhcpGxRCiZDdtNYL+hHaqoJp55/ZzhNkbm7GtLBjg==;EndpointSuffix=core.windows.net");
             QueueClient queueClient = new QueueClient(connectionString, "newsqueue");
 
+            await queueClient.CreateIfNotExistsAsync();
+
             bool exitProgram = false;
             while (exitProgram == false)
             {
